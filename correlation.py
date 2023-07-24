@@ -16,8 +16,8 @@ import logging
 # Configuration
 config = {
     'folder_path': '/path/to/datasets/',
-    'metrics': ['tsr', 'apdex'],
-    'metrics_to_exclude': ['tsr', 'apdex', 'cpu'],
+    'metrics': ['apdex'],
+    'metrics_to_exclude': ['tsr', 'apdex', 'cpu'], # Change cpu to io for I/O CE experiments
 }
 
 # Logging config
