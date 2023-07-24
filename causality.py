@@ -56,7 +56,7 @@ def perform_granger_causality_tests(file_path, columns_to_exclude):
 
 if __name__ == "__main__":
     # Folder path
-    folder_path = '/home/dhruvshettty/Documents/research/datasets/Round 2/cpu_experiment/30 second/'
+    folder_path = '/path/to/datasets'
 
     # Get a list of all file paths in the folder
     file_paths = [os.path.join(folder_path, f) for f in os.listdir(folder_path)]
