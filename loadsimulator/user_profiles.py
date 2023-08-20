@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+This is a general user profiles modules used to along with the other scripts part
+of the load generator for the Chaos Engineering experiments. These show the most
+common user profiles and their interactions. For confidentiality reasons, the entire
+user profiles and access have been generalized.
+
+Author: dhruvshetty213@gmail.com
+"""
 import requests
 from locust import HttpUser, task, between, tag
 from helpers import generate_user, generate_payment_payload, test_card
@@ -46,7 +57,6 @@ class BasicUser(HttpUser):
     def register_user_card(self) -> None:
         self.client.post(API_ENDPOINTS["PAYMENT_METHODS"],
                          json=self.user_data, headers=self.get_request_headers(init_call=True))
-        #... Rest of the stripe functions, similar to your example ...
 
     def delete_user(self) -> None:
         with self.client.delete(API_ENDPOINTS["DELETE_USER"] + "?force=true", headers=self.get_request_headers(init_call=True), catch_response=True) as response:
@@ -74,9 +84,11 @@ class BasicUser(HttpUser):
             headers[API_HEADERS["ACCESS_TOKEN"]] = self.access_token
 
         return headers
+        
+    # ... rest of the user tasks ...
 
 class PrivateUser(BasicUser):
-    """PrivateUser performs tasks for the average user in the Private API."""
+    """PrivateUser performs tasks for the average user in the application's API endpoint."""
     wait_time = between(5, 10)
 
     @task(3)
